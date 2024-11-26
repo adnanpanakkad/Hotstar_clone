@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotstar/widgets/custom_snackbar.dart'; // Ensure this is correctly implemented
+import 'package:hotstar/widgets/bottombar.dart';
+import 'package:hotstar/widgets/auth/custom_snackbar.dart'; // Ensure this is correctly implemented
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -13,7 +14,7 @@ class RegisterController extends GetxController {
   // Login Function
   Future<void> register(String email, String password) async {
     if (registerFormKey.currentState!.validate()) {
-      isLoading.value = true; // Start loading
+      isLoading.value = true; 
       final url = Uri.parse('https://reqres.in/api/register');
 
       try {
@@ -26,26 +27,28 @@ class RegisterController extends GetxController {
           headers: {"Content-Type": "application/json"},
         );
 
-        isLoading.value = false; // Stop loading after response
-
+        isLoading.value = false; 
         if (response.statusCode == 200) {
           final responseData = json.decode(response.body);
-          // Handle success (e.g., store token or navigate)
+          
           CustomSnackbar.show(
             title: 'Success',
-            description: 'Login Successful!',
+            description: 'Registration Successful!',
             backgroundColor: Colors.green.shade600,
             icon: const Icon(
               Icons.check_circle,
               color: Colors.white,
             ),
           );
-          print(
-              'Token: ${responseData['token']}'); // Example of using response data
+          print('Token: ${responseData['token']}'); 
+
+         
+          Get.offAll(() =>
+              BottombarScreens()); 
         } else {
-          // Show server error message if available
+         
           final errorMessage =
-              json.decode(response.body)['error'] ?? 'Login failed';
+              json.decode(response.body)['error'] ?? 'Registration failed';
           CustomSnackbar.show(
             title: 'Error',
             description: errorMessage,
@@ -57,9 +60,9 @@ class RegisterController extends GetxController {
           );
         }
       } catch (e) {
-        isLoading.value = false; // Stop loading in case of error
+        isLoading.value = false; 
         CustomSnackbar.show(
-          title: 'Login Failed',
+          title: 'Registration Failed',
           description: 'An error occurred. Please try again later.',
           backgroundColor: Colors.red.shade600,
           icon: const Icon(
@@ -67,7 +70,7 @@ class RegisterController extends GetxController {
             color: Colors.white,
           ),
         );
-        print('Error: $e'); // Debugging info
+        print('Error: $e'); 
       }
     } else {
       CustomSnackbar.show(

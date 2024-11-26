@@ -40,7 +40,7 @@ class CustomTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(8.0),
         ),
         filled: true,
-        fillColor: Colors.white.withOpacity(0.8), // Glassmorphism input field
+        fillColor: Colors.white.withOpacity(0.8), 
       ),
     );
   }
