@@ -15,7 +15,7 @@ class BottombarScreens extends StatefulWidget {
 class BottombarScreensState extends State<BottombarScreens> {
   var currentIndex = 0;
   final List<Widget> _pages = [
-    const HomeScreen(),
+    HomeScreen(),
     const Newandhotscreen(),
     const DownloadsScreen(),
     const ProfileScreen(),
@@ -93,7 +93,7 @@ class BottombarScreensState extends State<BottombarScreens> {
                             listOfIcons[index],
                             size: screenWidth * .076,
                             color: index == currentIndex
-                                ? Colors.greenAccent
+                                ? Colors.blueAccent
                                 : Colors.grey,
                           ),
                         ),

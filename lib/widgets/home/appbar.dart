@@ -6,7 +6,7 @@ AppBar appBar(String logo, context) {
     backgroundColor: Colors.black,
     actions: [
       Padding(
-        padding: EdgeInsets.only(left: 15),
+        padding: const EdgeInsets.only(left: 15),
         child: SizedBox(
           width: 50,
           height: 40,
@@ -30,16 +30,9 @@ AppBar appBar(String logo, context) {
             CupertinoIcons.search,
             color: Colors.white,
           )),
-      Padding(
-        padding: const EdgeInsets.only(right: 20, left: 10),
-        child: Container(
-          decoration: const BoxDecoration(
-              color: Colors.greenAccent,
-              borderRadius: BorderRadius.all(Radius.circular(2))),
-          width: 22,
-          height: 22,
-        ),
-      ),
+      const Padding(
+          padding: EdgeInsets.only(right: 20, left: 10),
+          child: Icon(Icons.notifications)),
     ],
   );
 }
