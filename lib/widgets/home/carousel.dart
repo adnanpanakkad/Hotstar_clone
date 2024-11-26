@@ -3,11 +3,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 
 class ImageCarousel extends StatelessWidget {
   final List<String> imageAssets;
-  final AsyncSnapshot snapshot;
   const ImageCarousel({
     super.key,
     required this.imageAssets,
-    required this.snapshot,
   });
 
   @override

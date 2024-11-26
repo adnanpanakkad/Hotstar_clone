@@ -14,7 +14,7 @@ class LoginController extends GetxController {
   // Login Function
   Future<void> login(String email, String password) async {
     if (loginFormKey.currentState!.validate()) {
-      isLoading.value = true; 
+      isLoading.value = true;
       final url = Uri.parse('https://reqres.in/api/login');
 
       try {
@@ -27,7 +27,7 @@ class LoginController extends GetxController {
           headers: {"Content-Type": "application/json"},
         );
 
-        isLoading.value = false; 
+        isLoading.value = false;
         if (response.statusCode == 200) {
           final responseData = json.decode(response.body);
           CustomSnackbar.show(
@@ -39,13 +39,10 @@ class LoginController extends GetxController {
               color: Colors.white,
             ),
           );
-          print('Token: ${responseData['token']}'); 
+          print('Token: ${responseData['token']}');
 
-          
-          Get.offAll(() =>
-              BottombarScreens()); 
+          Get.offAll(() => BottombarScreens());
         } else {
-          
           final errorMessage =
               json.decode(response.body)['error'] ?? 'Login failed';
           CustomSnackbar.show(
@@ -59,7 +56,7 @@ class LoginController extends GetxController {
           );
         }
       } catch (e) {
-        isLoading.value = false; 
+        isLoading.value = false;
         CustomSnackbar.show(
           title: 'Login Failed',
           description: 'An error occurred. Please try again later.',
@@ -69,7 +66,7 @@ class LoginController extends GetxController {
             color: Colors.white,
           ),
         );
-        print('Error: $e'); 
+        print('Error: $e');
       }
     } else {
       CustomSnackbar.show(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotstar/widgets/profile/profile_appbar.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -6,7 +7,10 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text('ProfileScreen')),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(40),
+        child: ProfileAppbar(title: 'Profile'),
+      ),
     );
   }
 }

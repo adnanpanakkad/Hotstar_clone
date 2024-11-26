@@ -9,7 +9,29 @@ import '../model/movie_model.dart';
 class ApiController extends GetxController {
   // Observables
   var isLoading = false.obs;
+ var trendingMovies = [].obs;
+  var upcomingMovies = [].obs;
+  var topRatedMovies = [].obs;
 
+  @override
+  void onInit() {
+    super.onInit();
+    fetchMovies();
+  }
+
+  void fetchMovies() async {
+    isLoading.value = true;
+
+    try {
+      trendingMovies.value = await getTrendingMovies();
+      upcomingMovies.value = await getUpcomingMovies();
+      topRatedMovies.value = await getTopRatedMovies();
+    } catch (e) {
+      // Handle error
+    } finally {
+      isLoading.value = false;
+    }
+  }
   // API Endpoints
   static const trendingUrl =
       'https://api.themoviedb.org/3/trending/movie/day?api_key=${Constants.apiKey}';

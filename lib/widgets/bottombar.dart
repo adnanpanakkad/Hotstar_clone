@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hotstar/screens/downloads.dart';
+import 'package:hotstar/screens/downloads_screen.dart';
 import 'package:hotstar/screens/home_screen.dart';
 import 'package:hotstar/screens/newandhot_screen.dart';
 import 'package:hotstar/screens/profile_screen.dart';
@@ -24,7 +24,7 @@ class BottombarScreensState extends State<BottombarScreens> {
   List<IconData> listOfIcons = [
     Icons.home_rounded,
     Icons.playlist_play_rounded,
-    Icons.download_for_offline_outlined,
+    Icons.cloud_download_rounded,
     Icons.person,
   ];
 

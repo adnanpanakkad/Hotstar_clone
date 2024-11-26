@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotstar/screens/login_screen.dart';
 import 'package:hotstar/widgets/bottombar.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Hotstar clone',
       theme: ThemeData.dark(),
-      home: BottombarScreens(),
+      home: LoginScreen(),
     );
   }
 }

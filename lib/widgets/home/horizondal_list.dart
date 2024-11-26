@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:hotstar/constent/constent_api.dart';
 
-
 class MainTileCard extends StatelessWidget {
   const MainTileCard({
-    Key? key,
+    super.key,
     required this.title,
-    required this.snapshot,
-
-  }) : super(key: key);
+    required this.movies, 
+  });
 
   final String title;
-  final AsyncSnapshot snapshot;
-
-
+  final List movies;
   @override
   Widget build(BuildContext context) {
+    if (movies.isEmpty) {
+      return const SizedBox(); 
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -34,8 +34,9 @@ class MainTileCard extends StatelessWidget {
           height: 150,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: snapshot.data.length,
+            itemCount: movies.length,
             itemBuilder: (context, index) {
+              final movie = movies[index]; // Access movie details
               return Padding(
                 padding: const EdgeInsets.only(right: 15),
                 child: ClipRRect(
@@ -43,10 +44,15 @@ class MainTileCard extends StatelessWidget {
                   child: SizedBox(
                     width: 100,
                     height: 150,
-                    child: Image.network(  
-                      '${Constants.imagePath}${snapshot.data![index].posterPath}',  
+                    child: Image.network(
+                      '${Constants.imagePath}${movie.posterPath}', // Use movie's poster path
                       filterQuality: FilterQuality.high,
-                      fit: BoxFit.contain,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return const Center(
+                          child: Icon(Icons.broken_image, color: Colors.white),
+                        );
+                      },
                     ),
                   ),
                 ),
